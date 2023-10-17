@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+long long n, i, v[10001], ogl = 0, copien, uc, k = 1, j, ok = 0;
+
+int isPalindrom(int n)
+{
+    int copien = n;
+    int ogl = 0;
+    
+    while(copien > 0)
+    {
+        uc = copien % 10;
+        ogl = ogl * 10 + uc;
+        copien /= 10;
+    }
+    
+    if(ogl == n)
+    {
+        return true;
+    }
+    else
+    {
+    return false;
+    }
+}
+
+int main()
+{
+    ifstream fin("palindromsd.in");
+    ofstream fout("palindromsd.out");
+    
+    i = 1;
+    
+    while(fin >> n)
+    {
+        if(isPalindrom(n) == true)
+        {
+            ok = 1;
+            v[i] = n;
+            i ++;
+            k ++;
+        }
+    }
+    
+    if(ok == 0)
+    {
+        fout << -1;
+    }
+    else
+    {
+    for(i = 1, j = k - 1; j >= i; j--, i++)
+    {
+        if(i == j)
+        {
+            fout << v[i] << " ";
+        }
+        else
+        {
+        fout << v[i] << " " << v[j] << " ";
+        }
+    }
+    }
+    
+    return 0;
+}
+
